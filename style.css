@@ -74,6 +74,36 @@ body {
     box-shadow: none;
 }
 
+.nav-links .nav-link {
+    color: #fff;
+    padding: 0.35rem 0.5rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-links .nav-link:hover,
+.nav-links .nav-link:focus {
+    color: var(--soft-cyan);
+    text-decoration: none;
+}
+
+.about-section {
+    background: linear-gradient(180deg, rgba(0, 31, 63, 0.95), rgba(0, 0, 0, 0.75)), url('https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+}
+
+.about-card {
+    background: rgba(3, 13, 35, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-highlights {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.text-white-opacity {
+    color: rgba(255, 255, 255, 0.82);
+}
+
 .dropdown-menu-custom {
     display: none;
     position: absolute;

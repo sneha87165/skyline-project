@@ -25,18 +25,29 @@
   <body>
     <!-- 1. Navbar & Dropdown -->
     <nav class="navbar fixed-top navbar-dark navbar-custom">
-      <div class="container">
+      <div class="container d-flex align-items-center justify-content-between">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
           <span class="logo-badge"><i class="bi bi-airplane-fill"></i></span>
           <span class="logo-text">
             <span class="logo-accent">Sky</span>Line
           </span>
         </a>
-        <button class="navbar-toggler" type="button" id="navbar-toggler">
+        <div class="nav-links d-none d-md-flex align-items-center gap-3">
+          <a class="nav-link text-white" href="#home">Home</a>
+          <a class="nav-link text-white" href="#about">About</a>
+          <a class="nav-link text-white" href="#flights">Flights</a>
+          <a class="nav-link text-white" href="#car-rental">Car Rental</a>
+          <a class="nav-link text-white" href="#cruise">Cruise</a>
+          <a class="nav-link text-white" href="#features">Features</a>
+          <a class="nav-link text-white" href="#contact">Contact</a>
+        </div>
+        <button class="navbar-toggler ms-auto" type="button" id="navbar-toggler">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="dropdown-menu-custom" id="dropdown-menu">
           <a class="dropdown-item" href="#home">Home</a>
+          <a class="dropdown-item" href="#about">About</a>
+          <a class="dropdown-item" href="#flights">Flights</a>
           <a class="dropdown-item" href="#car-rental">Car Rental</a>
           <a class="dropdown-item" href="#cruise">Cruise</a>
           <a class="dropdown-item" href="#features">Features</a>
@@ -51,6 +62,9 @@
         <h1 class="display-3 text-white fw-bold">
           Book Your Flight In One Second
         </h1>
+        <p class="hero-subtitle text-white mb-4">
+          SkyLine helps you plan premium international travel with fast country-to-country booking and smart route suggestions.
+        </p>
         <div class="search-card mt-5 mx-auto">
           <div class="card-body p-4">
             <!-- Toggles -->
@@ -72,16 +86,28 @@
             <!-- Form -->
             <form>
               <div class="mb-2 text-start">
-                <label class="form-label text-white small mb-1">From</label>
-                <input type="text" class="form-control" placeholder="Origin" />
-              </div>
-              <div class="mb-2 text-start">
-                <label class="form-label text-white small mb-1">To</label>
+                <label class="form-label text-white small mb-1">From (Country)</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Destination"
+                  id="from-country"
+                  placeholder="Origin country"
                 />
+                <div class="form-text text-white text-opacity-75">
+                  Enter a full foreign country name, e.g. United States.
+                </div>
+              </div>
+              <div class="mb-2 text-start">
+                <label class="form-label text-white small mb-1">To (Country)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="to-country"
+                  placeholder="Destination country"
+                />
+                <div class="form-text text-white text-opacity-75">
+                  Enter a full foreign country name, e.g. United Kingdom.
+                </div>
               </div>
               <div class="row g-2 mb-2">
                 <div class="col-6 text-start">
@@ -240,6 +266,36 @@
         </div>
       </div>
     </header>
+
+    <!-- 2. About SkyLine -->
+    <section id="about" class="about-section py-5">
+      <div class="container">
+        <div class="about-card p-4 p-lg-5 rounded-4 shadow-lg">
+          <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+              <h2 class="text-white mb-3">About SkyLine</h2>
+              <p class="text-white-opacity mb-3">
+                SkyLine is a premium travel experience built for modern explorers. Our website makes it easy to search foreign countries, compare international routes, and book flights with confidence.
+              </p>
+              <p class="text-white-opacity mb-0">
+                Whether you are planning a vacation, business trip, or a quick weekend getaway, SkyLine brings you curated route ideas, luxury car rental partners, and exciting cruise destinations.
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="about-highlights p-4 rounded-4">
+                <h5 class="text-white mb-3">Why choose SkyLine?</h5>
+                <ul class="list-unstyled text-white-opacity mb-0">
+                  <li>• Foreign country search with full country names</li>
+                  <li>• Easy flight route discovery</li>
+                  <li>• Featured car rentals and cruise experiences</li>
+                  <li>• Clean responsive layout and smooth navigation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <main>
       <!-- 2.1 Flight Destinations Section (New) -->

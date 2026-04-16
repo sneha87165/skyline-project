@@ -32,6 +32,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Trip Type Toggles
     const btnRoundTrip = document.getElementById('btn-round-trip');
     const btnOneWay = document.getElementById('btn-one-way');
+    const fromCountryInput = document.getElementById('from-country');
+    const toCountryInput = document.getElementById('to-country');
+    const bookingForm = document.querySelector('.search-card form');
+
+    function isForeignCountryName(value) {
+        const trimmed = value.trim();
+        return /^[A-Za-z\s]+$/.test(trimmed) && trimmed.split(/\s+/).length >= 2;
+    }
+
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(event) {
+            const fromValue = fromCountryInput.value;
+            const toValue = toCountryInput.value;
+
+            if (!isForeignCountryName(fromValue) || !isForeignCountryName(toValue)) {
+                event.preventDefault();
+                alert('Please enter a valid foreign country name with at least two words for both From and To.');
+            }
+        });
+    }
 
     function toggleTripType(activeBtn, inactiveBtn) {
         activeBtn.classList.add('active');

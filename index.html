@@ -87,26 +87,32 @@
             <form>
               <div class="mb-2 text-start">
                 <label class="form-label text-white small mb-1">From (Country)</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="from-country"
-                  placeholder="Origin country"
-                />
+                <select class="form-select" id="from-country" required>
+                  <option value="" disabled selected>Choose origin country</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>United Arab Emirates</option>
+                  <option>South Africa</option>
+                  <option>New Zealand</option>
+                  <option>Saudi Arabia</option>
+                </select>
                 <div class="form-text text-white text-opacity-75">
-                  Enter a full foreign country name, e.g. United States.
+                  Select a full foreign country name.
                 </div>
               </div>
               <div class="mb-2 text-start">
                 <label class="form-label text-white small mb-1">To (Country)</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="to-country"
-                  placeholder="Destination country"
-                />
+                <select class="form-select" id="to-country" required>
+                  <option value="" disabled selected>Choose destination country</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>United Arab Emirates</option>
+                  <option>South Africa</option>
+                  <option>New Zealand</option>
+                  <option>Saudi Arabia</option>
+                </select>
                 <div class="form-text text-white text-opacity-75">
-                  Enter a full foreign country name, e.g. United Kingdom.
+                  Select a full foreign country name.
                 </div>
               </div>
               <div class="row g-2 mb-2">
@@ -258,9 +264,9 @@
                   placeholder="Enter Your Phone"
                 />
               </div>
-              <a href="#flights" class="btn btn-blue-violet w-100 fw-bold py-2">
+              <button type="submit" class="btn btn-blue-violet w-100 fw-bold py-2">
                 SEARCH FLIGHT
-              </a>
+              </button>
             </form>
           </div>
         </div>

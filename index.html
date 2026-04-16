@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyLine - Premium Travel</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 1. Navbar & Dropdown -->
+    <nav class="navbar fixed-top navbar-dark navbar-custom">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+          <span class="logo-badge"><i class="bi bi-airplane-fill"></i></span>
+          <span class="logo-text">
+            <span class="logo-accent">Sky</span>Line
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" id="navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="dropdown-menu-custom" id="dropdown-menu">
+          <a class="dropdown-item" href="#home">Home</a>
+          <a class="dropdown-item" href="#car-rental">Car Rental</a>
+          <a class="dropdown-item" href="#cruise">Cruise</a>
+          <a class="dropdown-item" href="#features">Features</a>
+          <a class="dropdown-item" href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 2. Hero & Glassmorphism Search -->
+    <header id="home" class="hero-section">
+      <div class="container text-center hero-content">
+        <h1 class="display-3 text-white fw-bold">
+          Book Your Flight In One Second
+        </h1>
+        <div class="search-card mt-5 mx-auto">
+          <div class="card-body p-4">
+            <!-- Toggles -->
+            <div class="d-flex mb-3">
+              <button
+                class="btn flex-fill rounded-0 fw-bold btn-trip-type active"
+                id="btn-round-trip"
+              >
+                ROUND TRIP
+              </button>
+              <button
+                class="btn flex-fill rounded-0 fw-bold btn-trip-type"
+                id="btn-one-way"
+              >
+                ONE WAY
+              </button>
+            </div>
+
+            <!-- Form -->
+            <form>
+              <div class="mb-2 text-start">
+                <label class="form-label text-white small mb-1">From</label>
+                <input type="text" class="form-control" placeholder="Origin" />
+              </div>
+              <div class="mb-2 text-start">
+                <label class="form-label text-white small mb-1">To</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Destination"
+                />
+              </div>
+              <div class="row g-2 mb-2">
+                <div class="col-6 text-start">
+                  <label class="form-label text-white small mb-1"
+                    >Departure</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Select date"
+                    onfocus="this.type = 'date'"
+                    onblur="this.type = 'text'"
+                  />
+                </div>
+                <div class="col-6 text-start">
+                  <label class="form-label text-white small mb-1"
+                    >Arrival</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Select date"
+                    onfocus="this.type = 'date'"
+                    onblur="this.type = 'text'"
+                  />
+                </div>
+              </div>
+              <div class="mb-2 text-start position-relative">
+                <label class="form-label text-white small mb-1">Seat/Pax</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="seat-pax-display"
+                  value="1 Pax, Economy"
+                  readonly
+                  style="cursor: pointer; background-color: white"
+                />
+
+                <!-- Popup (Overlay) -->
+                <div
+                  id="passenger-popup"
+                  class="passenger-popup d-none text-start"
+                >
+                  <div
+                    class="pax-row d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="text-white small">Adult (+12)</span>
+                    <div class="counter-controls d-flex align-items-center">
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-adult-minus"
+                      >
+                        -
+                      </button>
+                      <span class="text-white mx-2" id="pax-adult-count"
+                        >1</span
+                      >
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-adult-plus"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="pax-row d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="text-white small">Children (2-12)</span>
+                    <div class="counter-controls d-flex align-items-center">
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-child-minus"
+                      >
+                        -
+                      </button>
+                      <span class="text-white mx-2" id="pax-child-count"
+                        >0</span
+                      >
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-child-plus"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="pax-row d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="text-white small">Infant (0-23m)</span>
+                    <div class="counter-controls d-flex align-items-center">
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-infant-minus"
+                      >
+                        -
+                      </button>
+                      <span class="text-white mx-2" id="pax-infant-count"
+                        >0</span
+                      >
+                      <button
+                        type="button"
+                        class="btn-circle"
+                        id="pax-infant-plus"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <select
+                      class="form-select form-select-sm"
+                      id="pax-class-select"
+                    >
+                      <option value="Economy">Economy</option>
+                      <option value="Business">Business</option>
+                      <option value="First Class">First Class</option>
+                    </select>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-orange w-100 fw-bold btn-sm"
+                    id="btn-pax-done"
+                  >
+                    DONE
+                  </button>
+                </div>
+              </div>
+              <div class="mb-2 text-start">
+                <label class="form-label text-white small mb-1">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Your Name"
+                />
+              </div>
+              <div class="mb-3 text-start">
+                <label class="form-label text-white small mb-1">Phone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Enter Your Phone"
+                />
+              </div>
+              <a href="#flights" class="btn btn-blue-violet w-100 fw-bold py-2">
+                SEARCH FLIGHT
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 2.1 Flight Destinations Section (New) -->
+      <section id="flights" class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Popular Flight Routes</h2>
+          <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="flight-card">
+                <img
+                  src="https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Dubai"
+                />
+                <div class="p-3">
+                  <h5>Delhi to Dubai</h5>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-3"
+                  >
+                    <span class="fw-bold text-primary">$199</span>
+                    <button class="btn btn-sm btn-teal book-now-btn">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="flight-card">
+                <img
+                  src="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="London"
+                />
+                <div class="p-3">
+                  <h5>NY to London</h5>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-3"
+                  >
+                    <span class="fw-bold text-primary">$450</span>
+                    <button class="btn btn-sm btn-teal book-now-btn">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="flight-card">
+                <img
+                  src="https://images.pexels.com/photos/1797161/pexels-photo-1797161.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Rome"
+                />
+                <div class="p-3">
+                  <h5>Paris to Rome</h5>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-3"
+                  >
+                    <span class="fw-bold text-primary">$120</span>
+                    <button class="btn btn-sm btn-teal book-now-btn">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="flight-card">
+                <img
+                  src="https://images.pexels.com/photos/1878293/pexels-photo-1878293.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Sydney"
+                />
+                <div class="p-3">
+                  <h5>Tokyo to Sydney</h5>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-3"
+                  >
+                    <span class="fw-bold text-primary">$599</span>
+                    <button class="btn btn-sm btn-teal book-now-btn">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2.2 Travel Gallery Section (New) -->
+      <section id="gallery" class="py-5 bg-grey-theme">
+        <div class="container">
+          <h2 class="text-center text-white mb-5">Travel Gallery</h2>
+          <div class="row g-3">
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 1"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 2"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 3"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/21014/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 4"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 5"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 col-6">
+              <div class="gallery-item">
+                <img
+                  src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Travel 6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Luxury Car Rental Section -->
+      <section id="car-rental" class="py-5">
+        <div class="container">
+          <h2 class="text-center text-white mb-5">Luxury Car Rental</h2>
+          <div class="row g-4">
+            <!-- Car 1: Sedan -->
+            <div class="col-lg-4 col-md-6">
+              <div class="car-card">
+                <img
+                  src="https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  class="card-img-top"
+                  alt="Luxury Sedan"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Luxury Sedan</h5>
+                  <p class="card-text">
+                    From <span class="fw-bold">$199/day</span>
+                  </p>
+                  <button class="btn btn-teal w-100 book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Car 2: SUV -->
+            <div class="col-lg-4 col-md-6">
+              <div class="car-card">
+                <img
+                  src="https://images.pexels.com/photos/1637859/pexels-photo-1637859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  class="card-img-top"
+                  alt="Premium SUV"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Premium SUV</h5>
+                  <p class="card-text">
+                    From <span class="fw-bold">$249/day</span>
+                  </p>
+                  <button class="btn btn-teal w-100 book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Car 3: Convertible -->
+            <div class="col-lg-4 col-md-6">
+              <div class="car-card">
+                <img
+                  src="https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  class="card-img-top"
+                  alt="Convertible"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Sport Convertible</h5>
+                  <p class="card-text">
+                    From <span class="fw-bold">$299/day</span>
+                  </p>
+                  <button class="btn btn-teal w-100 book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Cruise Gallery Section -->
+      <section id="cruise" class="py-5 bg-black-theme">
+        <div class="container">
+          <h2 class="text-center text-white mb-5">Cruise Gallery</h2>
+          <div class="row g-4">
+            <!-- Cruise 1 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="cruise-card">
+                <img
+                  src="https://images.pexels.com/photos/1654834/pexels-photo-1654834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Caribbean Cruise"
+                />
+                <div class="price-tag">$1,250</div>
+                <div class="cruise-body">
+                  <h5>Caribbean</h5>
+                  <button class="btn btn-teal btn-sm book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Cruise 2 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="cruise-card">
+                <img
+                  src="data:image/jpeg;base64,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 "
+                  alt="Mediterranean Cruise"
+                />
+                <div class="price-tag">$1,450</div>
+                <div class="cruise-body">
+                  <h5>Mediterranean</h5>
+                  <button class="btn btn-teal btn-sm book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Cruise 3 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="cruise-card">
+                ht
+                <img
+                  src="https://images.pexels.com/photos/1646311/pexels-photo-1646311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Alaskan Cruise"
+                />
+                <div class="price-tag">$1,850</div>
+                <div class="cruise-body">
+                  <h5>Alaskan</h5>
+                  <button class="btn btn-teal btn-sm book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Cruise 4 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="cruise-card">
+                <img
+                  src="https://images.pexels.com/photos/33545/sunrise-phu-quoc-island-ocean.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Baltic Sea Cruise"
+                />
+                <div class="price-tag">$1,650</div>
+                <div class="cruise-body">
+                  <h5>Baltic Sea</h5>
+                  <button class="btn btn-teal btn-sm book-now-btn">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. About & Why Choose Us Section -->
+      <section id="features" class="py-5 bg-grey-theme">
+        <div class="container">
+          <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="mb-3">
+                About <span class="text-orange">usahelpsupport</span>
+              </h2>
+              <p class="text-light-grey">
+                We are a dedicated team of travel enthusiasts committed to
+                providing you with the most luxurious and seamless travel
+                experiences. From private jets to exclusive cruises, we ensure
+                every journey is unforgettable.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-center text-white mb-4">Why Choose Us?</h3>
+          <div class="row text-center g-4">
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bi bi-headset"></i></div>
+                <h5 class="mt-3">24/7 Support</h5>
+                <p>
+                  Our team is available around the clock to assist you with any
+                  inquiries.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-airplane-fill"></i>
+                </div>
+                <h5 class="mt-3">Best Flights</h5>
+                <p>
+                  Get the best prices for flights from our extensive network of
+                  airlines.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h5 class="mt-3">Secure Booking</h5>
+                <p>
+                  We ensure your booking process is safe, secure, and seamless.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 6. Main Footer -->
+    <footer id="contact" class="main-footer">
+      <div class="container py-5">
+        <div class="row g-5">
+          <!-- About Section -->
+          <div class="col-lg-5 col-md-12">
+            <h5 class="footer-heading">About <span>SkyLine</span></h5>
+            <p class="footer-text">
+              Your gateway to seamless travel experiences. We specialize in
+              curating premium flight, car rental, and cruise packages tailored
+              to your desires. Our commitment is to provide unparalleled service
+              and unforgettable journeys across the globe.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="col-lg-4 col-md-6">
+            <h5 class="footer-heading">Quick Links</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#contact">About Us</a></li>
+              <li><a href="#flights">Flight</a></li>
+              <li><a href="#car-rental">Car Rental</a></li>
+              <li><a href="#cruise">Cruise</a></li>
+            </ul>
+          </div>
+          <!-- Legal Links -->
+          <div class="col-lg-3 col-md-6">
+            <h5 class="footer-heading">Legal</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,451 @@
+/* Define color variables */
+:root {
+    --deep-blue: #001f3f;
+    --soft-cyan: #00a8b5;
+    --orange: #ff8c00;
+    --dark-bg: #262626;
+    --blue-violet: #8A2BE2;
+    --popup-border: #ff4500;
+}
+
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* Offset for fixed navbar */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* padding-bottom: 70px; */ /* Removed for new static footer */
+}
+
+.btn-teal {
+    background-color: var(--soft-cyan);
+    border-color: var(--soft-cyan);
+    color: #fff;
+}
+
+.btn-teal:hover {
+    background-color: #008a94;
+    border-color: #008a94;
+    color: #fff;
+}
+
+/* 1. Navbar */
+.navbar-custom {
+    background: linear-gradient(90deg, var(--deep-blue), #003366);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo-badge {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--soft-cyan);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.logo-badge .bi {
+    font-size: 1.2rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.logo-accent {
+    color: var(--soft-cyan);
+}
+
+.navbar-toggler {
+    border: none;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.dropdown-menu-custom {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 15px;
+    background-color: rgba(0, 31, 63, 0.95);
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.dropdown-menu-custom.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu-custom .dropdown-item {
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.dropdown-menu-custom .dropdown-item:hover {
+    background-color: var(--soft-cyan);
+}
+
+/* 2. Hero & Search Card */
+.hero-section {
+    height: 100vh;
+    background: url('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.search-card {
+    max-width: 600px;
+    background: rgba(0, 31, 63, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.passenger-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.counter-controls span {
+    min-width: 20px;
+    text-align: center;
+}
+
+/* 3. Car Rental Section */
+#car-rental {
+    position: relative;
+    background: url('https://images.pexels.com/photos/3137077/pexels-photo-3137077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+#car-rental::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+#car-rental .container {
+    position: relative;
+    z-index: 2;
+}
+
+.car-card {
+    background-color: #333;
+    border: 1px solid var(--soft-cyan);
+    border-radius: 10px;
+    overflow: hidden;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 168, 181, 0.2);
+}
+
+.car-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 4. Cruise Gallery */
+#cruise {
+    position: relative;
+    background: url('https://images.pexels.com/photos/1116533/pexels-photo-1116533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+#cruise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#cruise .container {
+    position: relative;
+    z-index: 2;
+}
+.cruise-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.cruise-card:hover {
+    transform: scale(1.05);
+}
+.cruise-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+.price-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--orange);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.cruise-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 2rem 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 5. Features Section */
+.feature-card {
+    padding: 2rem;
+    background-color: #333;
+    border-radius: 10px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 168, 181, 0.2);
+}
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: var(--orange);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+/* New Search Card Styles */
+.btn-trip-type {
+    background-color: #333;
+    color: #aaa;
+    border: none;
+    transition: all 0.3s;
+}
+.btn-trip-type.active {
+    background-color: var(--blue-violet);
+    color: #fff;
+}
+.btn-blue-violet {
+    background-color: var(--blue-violet);
+    color: #fff;
+    border: none;
+}
+.btn-blue-violet:hover {
+    background-color: #7223be;
+    color: #fff;
+}
+.passenger-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1c1c1e;
+    border: 1px solid var(--popup-border);
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 100;
+    margin-top: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.btn-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--popup-border);
+    color: var(--popup-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.btn-circle:hover {
+    background: var(--popup-border);
+    color: #fff;
+}
+.btn-orange {
+    background-color: var(--popup-border);
+    color: #fff;
+    border: none;
+}
+.btn-orange:hover {
+    background-color: #e03e00;
+    color: #fff;
+}
+
+/* 6. Main Footer */
+.main-footer {
+    background-color: #001021; /* Very dark navy blue */
+}
+
+.footer-heading {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.footer-heading span {
+    color: var(--orange);
+}
+
+.footer-text {
+    color: #adb5bd; /* Light grey */
+    font-size: 0.9rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--soft-cyan);
+}
+
+/* Flight Destination Section */
+.flight-card {
+    background: #f1efef;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.flight-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Travel Gallery Section */
+#gallery {
+    position: relative;
+    background: url('https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+#gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#gallery .container {
+    position: relative;
+    z-index: 2;
+}
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    height: 200px;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Themes */
+.bg-black-theme {
+    background-color: #000000;
+}
+.bg-grey-theme {
+    background-color: #262626;
+    color: #fff;
+}
+.text-orange {
+    color: var(--orange);
+}
+.text-light-grey {
+    color: #ccc;
+}
